@@ -1,30 +1,16 @@
-import {
-  AngularNodeAppEngine,
-  createNodeRequestHandler,
-  isMainModule,
-  writeResponseToNodeResponse,
-} from '@angular/ssr/node';
+import { AngularNodeAppEngine, createNodeRequestHandler, isMainModule, writeResponseToNodeResponse } from '@angular/ssr/node';
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import fs from 'fs';
 
+// Path to the index.html file
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
+const indexHtmlPath = resolve(browserDistFolder, 'index.html'); // Specify path to index.html
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
-
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
 
 /**
  * Serve static files from /browser
@@ -41,6 +27,9 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use('/**', (req, res, next) => {
+  // Read index.html content
+  const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8'); // Read the content of the index.html file
+
   angularApp
     .handle(req)
     .then((response) =>
