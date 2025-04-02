@@ -1,0 +1,85 @@
+.mission-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .mission-card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .mission-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .mission-image {
+    flex: 1;
+    max-width: 200px;
+    margin-right: 15px;
+  }
+  
+  .mission-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .mission-details {
+    flex: 2;
+  }
+  
+  .mission-details h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .mission-details p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .mission-details button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .mission-details button:hover {
+    background-color: #e55d50;
+}
+
+/* SpaceX Mission Heading */
+.spacex-heading {
+    font-size: 60px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(90deg, #1a1a2e, #16213e, #0f3460);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: 4px;
+    transition: transform 0.3s ease;
+}
+
+.spacex-heading:hover {
+    transform: scale(1.05);
+}
+
+  

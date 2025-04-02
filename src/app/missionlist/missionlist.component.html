@@ -1,8 +1,23 @@
-<div *ngFor="let mission of missions">
-    <app-missionfilter (filterChange)="filterByYear($event)"></app-missionfilter>
+<div class="mission-list-container">
+    <h1 class="spacex-heading">SpaceX Mission</h1>
 
-    <h3>{{ mission.mission_name }}</h3>
-    <p>Launch Year: {{ mission.launch_year }}</p>
-    <button mat-button [routerLink]="['/mission', mission.flight_number]">View Details</button>
-</div>
+    <app-missionfilter (filterChange)="filterByYear($event)"></app-missionfilter>
+  
+    <div *ngFor="let mission of missions" class="mission-card">
+      <div class="mission-image">
+        <img *ngIf="mission.links?.mission_patch" [src]="mission.links.mission_patch" alt="Mission Patch" />
+        <img *ngIf="!mission.links?.mission_patch" [src]="mission.links.mission_patch_small" alt="Mission Patch Small" />
+      </div>
+  
+      <div class="mission-details">
+        <h3>{{ mission.mission_name }}</h3>
+        <p>Launch Year: {{ mission.launch_year }}</p>
+        <p><strong>Details:</strong> {{ mission.details }}</p>
+        
+        <button mat-button [routerLink]="['/mission', mission.flight_number]">
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
   

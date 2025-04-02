@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./missiondetails.component.css'],
 })
 export class MissionDetailsComponent implements OnInit {
-  mission: Mission | undefined;
+  mission: Mission | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,8 +22,11 @@ export class MissionDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const flightNumber = Number(this.route.snapshot.paramMap.get('id'));
-    this.spaceXService.getMissionByFlightNumber(flightNumber).subscribe((data) => {
-      this.mission = data;
-    });
+    if (!isNaN(flightNumber)) {
+      this.spaceXService.getMissionByFlightNumber(flightNumber).subscribe((data) => {
+        this.mission = data;
+      });
+    }
   }
+  
 }

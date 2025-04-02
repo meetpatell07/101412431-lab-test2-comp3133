@@ -22,8 +22,4 @@ export class SpaceXApiService {
   getMissionByFlightNumber(flightNumber: number): Observable<Mission> {
     return this.http.get<Mission>(`${this.apiUrl}/${flightNumber}`);
   }
-  // Fetch mission by ID
-  getMissionDetails(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
-  }
 }

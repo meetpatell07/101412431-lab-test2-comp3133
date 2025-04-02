@@ -1,10 +1,54 @@
-<div *ngIf="mission">
-    <h3>{{ mission.mission_name }}</h3>
-    <p>Launch Year: {{ mission.launch_year }}</p>
-    <p>{{ mission.details }}</p>
-    <img [src]="mission.mission_patch_small" alt="Mission Patch">
-    <p><a [href]="mission.links.wikipedia" target="_blank">Wikipedia</a></p>
-    <p><a [href]="mission.links.article_link" target="_blank">Article</a></p>
-    <p><a [href]="mission.links.video_link" target="_blank">Video</a></p>
-  </div>
-  
+<div class="mission-details-container" *ngIf="mission">
+    <!-- Image on Left -->
+    <img *ngIf="mission.links.mission_patch || mission.links.mission_patch_small" 
+        [src]="mission.links.mission_patch || mission.links.mission_patch_small" 
+        alt="Mission Patch"
+        class="mission-image" />
+
+    <!-- Information on Right -->
+    <div class="mission-info">
+        <h2>SpaceX Mission: {{ mission.mission_name }}</h2>
+
+        <p *ngIf="mission.launch_year"><span>Launch Year:</span> {{ mission.launch_year }}</p>
+        <p *ngIf="mission.rocket?.rocket_name">
+            <span>Rocket Name:</span> {{ mission.rocket.rocket_name }}<br>
+            <span>Rocket Type:</span> {{ mission.rocket.rocket_type }}
+
+        </p>
+
+        <p *ngIf="mission.launch_success !== undefined">
+            <span>Launch Status:</span>
+            <span [class.success]="mission.launch_success" [class.failed]="!mission.launch_success">
+                {{ mission.launch_success ? 'Successful' : 'Failed' }}
+            </span>
+        </p>
+
+        <p *ngIf="mission.launch_site">
+            <span>Launch Site:</span> {{ mission.launch_site.site_name_long }}
+        </p>
+
+        <p *ngIf="mission.details">
+            <span>Launch Details:</span> 
+            {{ mission.details }}
+        </p>
+
+        <span>More info on Launch Details: </span> 
+
+        <!-- Mission Links -->
+        <div class="mission-links" *ngIf="mission.links">
+
+
+            <a *ngIf="mission.links.article_link" [href]="mission.links.article_link" target="_blank" class="mission-link">
+                <i class="fas fa-newspaper"></i> Read Article
+            </a>
+            <a *ngIf="mission.links.wikipedia" [href]="mission.links.wikipedia" target="_blank" class="mission-link">
+                <i class="fab fa-wikipedia-w"></i> Wikipedia
+            </a>
+            <a *ngIf="mission.links.video_link" [href]="mission.links.video_link" target="_blank" class="mission-link">
+                <i class="fas fa-video"></i> Watch Video
+            </a>
+        </div>
+
+        <a routerLink="/" class="back-button">Back to Missions</a>
+    </div>
+</div>

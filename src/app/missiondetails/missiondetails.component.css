@@ -1,0 +1,153 @@
+/* Mission Details Container */
+.mission-details-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(145deg, #f4f6fc, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between image and text */
+    text-align: left;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* On hover, add a floating effect */
+.mission-details-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* Mission Image - Left */
+.mission-image {
+    width: 100%;
+    max-width: 300px; /* Reduced size for better alignment */
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+/* On hover, slightly enlarge the image */
+.mission-image:hover {
+    transform: scale(1.05);
+}
+
+/* Mission Info - Right */
+.mission-info {
+    flex: 1; /* Take remaining space */
+}
+
+/* Mission Title */
+.mission-info h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #2b2d42;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* General Information */
+.mission-info p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+/* Highlighted Key Info */
+.mission-info p span {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+/* Launch Status */
+.success {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.failed {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Mission Links */
+
+
+.mission-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mission-link {
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+/* Icons inside links */
+.mission-link i {
+    margin-right: 6px;
+    font-size: 20px;
+}
+
+/* Hover effect for mission links */
+.mission-link:hover {
+    color: #0056b3;
+    transform: translateY(-3px);
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Back Button */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* On hover, add a floating effect */
+.back-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mission-details-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .mission-image {
+        max-width: 250px; /* Reduce size on smaller screens */
+    }
+
+    .mission-info {
+        text-align: center;
+    }
+
+    .mission-links {
+        justify-content: center;
+    }
+}
