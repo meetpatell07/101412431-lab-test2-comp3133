@@ -7,7 +7,6 @@ This is an Angular application that displays information about SpaceX missions. 
 - [Features](#features)
 - [Components](#components)
 - [Deployment](#deployment)
-- [License](#license)
 
 ## Project Setup
 
@@ -42,6 +41,33 @@ This is an Angular application that displays information about SpaceX missions. 
 - **Search or filter missions by launch year** using the mission filter component.
 
 - **Detailed information** is displayed when a mission is selected from the mission list.
+
+## Components
+
+### MissionList Component
+- Displays a list of SpaceX missions by fetching data from the SpaceX Launch API.
+- Each mission contains the following details:
+  - Mission name
+  - Launch year
+  - Mission details
+  - Rocket information
+- Provides links to additional mission-related content:
+  - Wikipedia
+  - Article link
+  - Video link
+
+### MissionFilter Component
+- Allows users to filter missions by their launch year.
+- Emits the selected year to filter the missions shown in the MissionList.
+
+### MissionDetails Component
+- Displays detailed information about a specific mission when clicked from the MissionList.
+
+### Service
+- A service is used to fetch data from the SpaceX REST API.
+
+### Interface
+- A TypeScript interface is used to define the structure of the data fetched from the SpaceX API.
 
 ## Screenshots
 
