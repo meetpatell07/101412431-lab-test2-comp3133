@@ -1,14 +1,8 @@
-import { Routes } from '@angular/router';
-import { MissionlistComponent } from './missionlist/missionlist.component';
-import { MissionDetailsComponent } from './missiondetails/missiondetails.component';
+import { RenderMode, ServerRoute } from '@angular/ssr';
 
-export const serverRoutes: Routes = [
+export const serverRoutes: ServerRoute[] = [
   {
-    path: 'mission/:id',
-    loadComponent: () => import('./missionlist/missionlist.component').then(m => m.MissionlistComponent),
-    data: {
-      prerender: false // Disable prerendering for this route
-    }
-  },
-  // Other routes...
+    path: '**',
+    renderMode: RenderMode.Prerender
+  }
 ];

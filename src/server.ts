@@ -7,7 +7,11 @@ import fs from 'fs';
 // Path to the index.html file
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
-const indexHtmlPath = resolve(browserDistFolder, 'index.html'); // Specify path to index.html
+// const indexHtmlPath = resolve(browserDistFolder, 'index.html'); // Specify path to index.html
+
+console.log('Server dist folder path:', serverDistFolder);
+console.log('Browser dist folder path:', browserDistFolder);
+// console.log('Index HTML path:', indexHtmlPath);
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
@@ -28,7 +32,7 @@ app.use(
  */
 app.use('/**', (req, res, next) => {
   // Read index.html content
-  const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8'); // Read the content of the index.html file
+  // const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8'); // Read the content of the index.html file
 
   angularApp
     .handle(req)
