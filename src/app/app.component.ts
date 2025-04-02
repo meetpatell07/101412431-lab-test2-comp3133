@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';  // Import HttpClient
+import { HttpClientModule } from '@angular/common/http';  // Import HttpClientModule
+import { SpaceXApiService } from './network/spacexapi.service';  // Assuming your service is in the services folder
+import { RouterModule } from '@angular/router';  // Import RouterModule
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true, // This is the standalone component setup in Angular 14+ or Universal SSR
+  imports: [RouterModule, HttpClientModule],  // Add RouterModule to imports
+  providers: [SpaceXApiService],  // Register the service here if needed
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = '1012355-lab-test2-comp3133';
+  constructor(private spaceXService: SpaceXApiService) {}
 }

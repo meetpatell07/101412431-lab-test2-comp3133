@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Mission } from '../models/mission';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +11,19 @@ export class SpaceXApiService {
 
   constructor(private http: HttpClient) {}
 
-  getAllMissions(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getAllMissions(): Observable<Mission[]> {
+    return this.http.get<Mission[]>(this.apiUrl);
   }
 
-  getMissionsByYear(year: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?launch_year=${year}`);
+  getMissionsByYear(year: string): Observable<Mission[]> {
+    return this.http.get<Mission[]>(`${this.apiUrl}?launch_year=${year}`);
+  }
+
+  getMissionByFlightNumber(flightNumber: number): Observable<Mission> {
+    return this.http.get<Mission>(`${this.apiUrl}/${flightNumber}`);
+  }
+  // Fetch mission by ID
+  getMissionDetails(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 }

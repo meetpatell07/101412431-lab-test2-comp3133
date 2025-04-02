@@ -1,35 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface Mission {
-  flight_number: number;
-  mission_name: string;
-  launch_year: string;
-  details: string;
-  rocket: {
-    rocket_name: string;
-    rocket_type: string;
-  };
-  links: {
-    mission_patch_small: string;
-    article_link: string;
-    wikipedia: string;
-    video_link: string;
-  };
-}
+import { SpaceXApiService } from '../network/spacexapi.service';
+import { Mission } from '../models/mission';
+import { CommonModule } from '@angular/common';
+import { MissionFilterComponent } from '../missionfilter/missionfilter.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-missionlist',
+  standalone: true,
+  imports: [RouterModule, CommonModule, MissionFilterComponent],  // Add RouterModule to imports
   templateUrl: './missionlist.component.html',
-  styleUrls: ['./missionlist.component.css']
+  styleUrls: ['./missionlist.component.css'],
 })
 export class MissionlistComponent implements OnInit {
   missions: Mission[] = [];
+  allMissions: Mission[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private spaceXService: SpaceXApiService) {}
 
   ngOnInit(): void {
-    this.http.get<Mission[]>('https://api.spacexdata.com/v3/launches')
-      .subscribe(data => this.missions = data);
+    this.spaceXService.getAllMissions().subscribe((data) => {
+      this.missions = data;
+      this.allMissions = data; // Store all missions for reset when needed
+    });
+  }
+
+  filterByYear(year: string): void {
+    if (year) {
+      this.missions = this.allMissions.filter(
+        (mission) => mission.launch_year === year
+      );
+    } else {
+      this.missions = [...this.allMissions]; // Reset to all missions if no filter
+    }
   }
 }

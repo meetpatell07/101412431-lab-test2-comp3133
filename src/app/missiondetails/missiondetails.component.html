@@ -1,0 +1,10 @@
+<div *ngIf="mission">
+    <h3>{{ mission.mission_name }}</h3>
+    <p>Launch Year: {{ mission.launch_year }}</p>
+    <p>{{ mission.details }}</p>
+    <img [src]="mission.mission_patch_small" alt="Mission Patch">
+    <p><a [href]="mission.links.wikipedia" target="_blank">Wikipedia</a></p>
+    <p><a [href]="mission.links.article_link" target="_blank">Article</a></p>
+    <p><a [href]="mission.links.video_link" target="_blank">Video</a></p>
+  </div>
+  
