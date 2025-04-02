@@ -1,59 +1,58 @@
-# 1012355LabTest2Comp3133
+# StudentID Lab Test 2 - COMP3133
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+This is an Angular application that displays information about SpaceX missions. The application fetches data from SpaceX's REST APIs and allows users to search/filter missions by their launch year. It also provides detailed information about each mission when clicked.
 
-## Development server
+## Table of Contents
+- [Project Setup](#project-setup)
+- [Features](#features)
+- [Components](#components)
+- [Deployment](#deployment)
+- [License](#license)
 
-To start a local development server, run:
+## Project Setup
 
-```bash
-ng serve
-```
+1. Clone this repository:
+   ```sh
+   git clone https://github.com/yourusername/studentid-lab-test2-comp3133.git
+   cd studentid-lab-test2-comp3133
+   ```
+2. Install dependencies:
+    ```sh
+    npm install
+    ```
+3. Run the application
+    ```sh
+    ng serve
+    ```
+    Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Features
 
-## Code scaffolding
+- **Display a list of SpaceX missions** with the following details:
+  - Flight number
+  - Mission name
+  - Launch year
+  - Mission details
+  - Rocket details (name and type)
+  - Links to mission-related content:
+    - Wikipedia
+    - Article link
+    - Video link
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Search or filter missions by launch year** using the mission filter component.
 
-```bash
-ng generate component component-name
-```
+- **Detailed information** is displayed when a mission is selected from the mission list.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Screenshots
 
-```bash
-ng generate --help
-```
+### Mission List View
 
-## Building
+![Mission List Screenshot](screenshots/home.png)
 
-To build the project run:
+### Mission Filter Component
 
-```bash
-ng build
-```
+![Mission Filter Screenshot](screenshots/filter.png)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Mission Details View
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![Mission Details Screenshot](screenshots/view.png)
