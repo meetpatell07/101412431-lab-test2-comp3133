@@ -30,9 +30,6 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use('/**', (req, res, next) => {
-  // Read index.html content
-  // const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8'); // Read the content of the index.html file
-
   angularApp
     .handle(req)
     .then((response) =>
