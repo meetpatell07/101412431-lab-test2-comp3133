@@ -6,8 +6,7 @@ import fs from 'fs';
 
 // Path to the index.html file
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-const browserDistFolder = resolve(serverDistFolder, '../browser');
-// const indexHtmlPath = resolve(browserDistFolder, 'index.html'); // Specify path to index.html
+const browserDistFolder = resolve('dist/browser');
 
 console.log('Server dist folder path:', serverDistFolder);
 console.log('Browser dist folder path:', browserDistFolder);
